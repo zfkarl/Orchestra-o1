@@ -1,0 +1,44 @@
+# LLM model configuration
+# Copy this file to config/model_config.yaml and fill in your real API keys
+
+models:
+  "gpt-5":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-5.1":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-5.2":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-5.4":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-4o":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-4o-audio-preview":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gemini-2.5-pro":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gemini-2.5-flash":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gemini-3.1-pro-preview":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "claude-opus-4-6":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"

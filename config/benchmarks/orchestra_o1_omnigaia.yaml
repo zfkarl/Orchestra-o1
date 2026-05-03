@@ -1,0 +1,42 @@
+# OmniGAIA Benchmark Configuration (Orchestra-O1 Mode)
+# For bench_orchestra_o1_omnigaia.py (MainAgent + SubAgent mode)
+
+# ======== Model Configuration ========
+# Model used by MainAgent (responsible for task decomposition and coordination)
+main_model: "gpt-5"
+
+# List of models used by SubAgent (responsible for executing specific subtasks)
+# Can configure multiple different models, system will auto-assign
+sub_models:
+  - "gpt-5"
+  # - "deepseek-chat"     # Can add more models
+
+# ======== Dataset Configuration ========
+# Path to OmniGAIA test metadata (JSONL format)
+# Download from: https://huggingface.co/datasets/xxx/OmniGAIA
+dataset_path: "data/OmniGAIA/test_metadata.jsonl"
+# OmniGAIA attachments are in images/, videos/, audios/ subdirs; attachments_dir points to the dataset root
+attachments_dir: "data/OmniGAIA"
+
+# Task filtering
+# OmniGAIA uses "Easy"/"Medium"/"Hard" as Level strings
+# level_filter: null       # null = all, or "Easy"/"Medium"/"Hard"/["Easy","Medium"] etc.
+level_filter: null
+
+# ======== Task Limits ========
+# Number of tasks to run
+max_tasks: 360   #360
+
+# Maximum attempts per task
+max_attempts: 10
+
+# Number of concurrent tasks
+max_concurrency: 10
+
+# ======== Output Configuration ========
+result_folder: "logs/omnigaia_orchestra_o1"
+trajectory_folder: "logs/omnigaia_orchestra_o1/trajectories"
+
+# ======== Required Environment Variables ========
+# Configure in .env file:
+#   JINA_API_KEY, SERPER_API_KEY, OPENAI_API_KEY

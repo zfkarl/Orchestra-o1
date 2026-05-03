@@ -1,0 +1,53 @@
+# Model config - Qwen3-8B (local vLLM) + commercial models
+#
+# qwen3-8b: deployed locally via vLLM, used as MainAgent
+# Other commercial models: unchanged, used as SubAgent / Trace Summary / Scorer
+#
+# If vLLM is deployed on a different port or machine, modify qwen3-8b base_url
+
+models:
+  # ========== Open-source model (local vLLM) ==========
+  "qwen3-8b":
+    api_type: "openai"
+    base_url: "http://localhost:8801/v1/"
+    api_key: "EMPTY"
+    temperature: 0.1
+    top_p: 0.9
+
+  # ========== Commercial models (for SubAgent, Scorer, etc.) ==========
+  "gpt-5":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-5.1":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-5.2":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-5.4":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-4o":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gpt-4o-audio-preview":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gemini-2.5-pro":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gemini-2.5-flash":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"
+  "gemini-3.1-pro-preview":
+    api_type: "openai"
+    base_url: "https://api.openai.com/v1/"
+    api_key: "your_openai_api_key_here"

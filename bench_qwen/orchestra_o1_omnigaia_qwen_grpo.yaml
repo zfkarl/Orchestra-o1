@@ -1,0 +1,34 @@
+# OmniGAIA Benchmark Configuration - Qwen3-8B GRPO model as MainAgent
+#
+# Differences from original Qwen3-8B version:
+#   - Uses GRPO-trained Qwen3-8B model
+#   - Output directory: separate logs/omnigaia_qwen_8b_grpo/ directory
+
+# ======== Model Configuration ========
+# MainAgent uses locally deployed Qwen3-8B GRPO model (via vLLM OpenAI-compatible API)
+# Note: this is the model name defined in model_config_qwen.yaml, not the model path
+main_model: "qwen3-8b"
+
+# SubAgent still uses commercial models
+sub_models:
+  - "gpt-5"
+
+# ======== Dataset Configuration ========
+dataset_path: "data/OmniGAIA/test_metadata.jsonl"
+attachments_dir: "data/OmniGAIA"
+
+# Task filtering
+level_filter: null
+
+# ======== Task Limits ========
+max_tasks: 360
+
+# Maximum attempts per task
+max_attempts: 10
+
+# Concurrency (adjust based on GPU resources for local deployment)
+max_concurrency: 5
+
+# ======== Output Configuration ========
+result_folder: "logs/omnigaia_qwen_8b_grpo"
+trajectory_folder: "logs/omnigaia_qwen_8b_grpo/trajectories"
