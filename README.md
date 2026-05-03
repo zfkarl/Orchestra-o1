@@ -1,4 +1,4 @@
-# 🎵 Orchestra-o1: Multi-Agent Orchestration for Complex Omnimodal Reasoning
+# Orchestra-o1: Omnimodal Agent Orchestration
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
