@@ -1,4 +1,4 @@
-# Orchestra-o1: Omnimodal Agent Orchestration
+# 🎵 Orchestra-o1: Multi-Agent Orchestration for Complex Omnimodal Reasoning
 
 <p align="center">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
@@ -14,7 +14,7 @@ Orchestra-o1 is a **multi-agent orchestration framework** that decomposes comple
   <img src="figs/orchestra-o1-framework.png" width="100%" alt="Orchestra-o1 Framework">
 </p>
 
-<p align="center"><b>Figure 1.</b> Overview of the Orchestra-o1 framework. The MainAgent orchestrates multi-turn interactions by decomposing omnimodal tasks into independent/dependent subtasks, creating specialized SubAgents with perception tools (image, audio, video analysis) and action tools (web search, page visit, code execution), and executing them in parallel. An online sub-agent specialization module handles sub-task preparation, model selection, tool integration, and memory allocation.</p>
+<p align="left"><b>Figure 1.</b> Overview of the Orchestra-o1 framework. The MainAgent orchestrates multi-turn interactions by decomposing omnimodal tasks into independent/dependent subtasks, creating specialized SubAgents with perception tools (image, audio, video analysis) and action tools (web search, page visit, code execution), and executing them in parallel. An online sub-agent specialization module handles sub-task preparation, model selection, tool integration, and memory allocation.</p>
 
 ## 📦 Model Weights
 
@@ -61,7 +61,6 @@ Orchestra-o1/
 │   ├── model_config.yaml             #    LLM API configuration
 │   └── benchmarks/                   #    Benchmark configurations
 ├── eval/                             # Evaluation scripts
-├── .env.example                      # Environment variables template
 ├── requirements.txt                  # Python dependencies
 └── README.md
 ```
@@ -77,9 +76,8 @@ cd Orchestra-o1
 # Install dependencies
 pip install -r requirements.txt
 
-# Copy and configure environment variables
-cp .env.example .env
-# Edit .env with your API keys (JINA_API_KEY, SERPER_API_KEY, OPENAI_API_KEY)
+# Create .env file and fill in your API keys (see "Environment Variables" section below)
+touch .env
 ```
 
 ### 2. Configure Models
@@ -123,7 +121,7 @@ Train Qwen3-8B as the MainAgent using GRPO (Group Relative Policy Optimization) 
   <img src="figs/orchestra-o1-8B-training.png" width="100%" alt="Orchestra-o1-8B Training Pipeline">
 </p>
 
-<p align="center"><b>Figure 2.</b> Orchestra-o1-8B training pipeline. <b>(a) Training Data Curation</b>: Starting from seed data, we run Orchestra-o1 (GPT-5) to collect trajectories, extract anchor facts across modalities, apply QA rewrites (pivot swapping, temporal shifting, etc.), and filter & verify to produce 1.2K high-quality training samples. <b>(b) DA-GRPO Training</b>: We reconstruct decision examples from expert trajectories, sample G candidate decisions from the base model (Qwen3-8B), score each on 4 dimensions via a rubric reward (format, action, tool, decision quality), compute relative advantages, and optimize with DA-GRPO to produce Orchestra-o1-8B.</p>
+<p align="left"><b>Figure 2.</b> Orchestra-o1-8B training pipeline. <b>(a) Training Data Curation</b>: Starting from seed data, we run Orchestra-o1 (GPT-5) to collect trajectories, extract anchor facts across modalities, apply QA rewrites (pivot swapping, temporal shifting, etc.), and filter & verify to produce 1.2K high-quality training samples. <b>(b) DA-GRPO Training</b>: We reconstruct decision examples from expert trajectories, sample G candidate decisions from the base model (Qwen3-8B), score each on 4 dimensions via a rubric reward (format, action, tool, decision quality), compute relative advantages, and optimize with DA-GRPO to produce Orchestra-o1-8B.</p>
 
 ### Prerequisites
 
@@ -186,12 +184,30 @@ python bench_qwen/eval_qwen.py --csv_path logs/omnigaia_qwen_8b_grpo/omnigaia_qw
 
 ### Environment Variables (`.env`)
 
+Create a `.env` file in the project root directory with the following content:
+
+```bash
+# ======== OmniGAIA Benchmark Tools ========
+# Jina API - used for web content extraction (ExtractUrlContentAction)
+JINA_API_KEY=your_jina_api_key_here
+
+# Serper API - used for Google Search (GoogleSearchAction)
+SERPER_API_KEY=your_serper_api_key_here
+SERPER_BASE_URL=https://google.serper.dev/search
+
+# ======== LLM API Config ========
+# Can also be configured in config/model_config.yaml
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1/
+```
+
 | Variable | Description |
 |---|---|
 | `OPENAI_API_KEY` | OpenAI API key (for GPT-5, GPT-4o, etc.) |
 | `OPENAI_BASE_URL` | OpenAI API base URL |
 | `JINA_API_KEY` | Jina API key (for web content extraction) |
 | `SERPER_API_KEY` | Serper API key (for Google search) |
+| `SERPER_BASE_URL` | Serper API base URL |
 
 ### Key Training Hyperparameters
 
