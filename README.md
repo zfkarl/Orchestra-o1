@@ -8,6 +8,12 @@
 
 Orchestra-o1 is a **multi-agent orchestration framework** that decomposes complex omnimodal tasks into parallel subtasks, delegating them to specialized SubAgents for execution. It features a **MainAgent + SubAgent** architecture where the MainAgent (orchestrator) plans and coordinates, while SubAgents execute specific subtasks using various tools.
 
+
+## 📰 News
+
+- **[2026.05]** Orchestra-o1 achieves **72.8% accuracy** on the OmniGAIA benchmark, ranking **1st** and outperforming the second-best method by **10.3 percentage points**.
+
+
 ## 🏗️ Architecture
 
 <p align="center">
@@ -32,17 +38,17 @@ The trained Orchestra-o1-8B model weights are available at: [[🤗 Model](https:
 
 ```
 Orchestra-o1/
-├── bench_orchestra_o1_omnigaia.py   # 🚀 Inference with commercial models (e.g., GPT-5)
+├── bench_orchestra_o1_omnigaia.py    # 🚀 Inference with commercial models (e.g., GPT-5)
 ├── bench_qwen/                       # 🚀 Inference with trained open-source models
-│   ├── run_qwen3_8b_grpo.sh         #    One-click: vLLM + benchmark (Qwen3-8B GRPO)
+│   ├── run_qwen3_8b_grpo.sh          #    One-click: vLLM + benchmark (Qwen3-8B GRPO)
 │   ├── bench_qwen_omnigaia.py        #    Benchmark runner for Qwen3-8B
 │   ├── eval_qwen.py                  #    Evaluation report generator
 │   ├── model_config_qwen.yaml        #    Model config (local vLLM + commercial APIs)
 │   └── orchestra_o1_omnigaia_qwen_grpo.yaml  # Benchmark config
-├── benchmark/                        # Benchmark framework
+├── benchmark/                        #    Benchmark framework
 │   ├── common/                       #    Runner, environment abstractions
 │   └── omnigaia/                     #    OmniGAIA benchmark implementation & tools
-├── base/                             # Base framework
+├── base/                             #    Base framework
 │   ├── agent/                        #    Agent abstractions (BaseAgent, Memory, ReAct)
 │   └── engine/                       #    LLM engine, cost monitoring, logging
 ├── orchestra_o1/                     # 🎵 Core orchestration framework
@@ -54,14 +60,14 @@ Orchestra-o1/
 │   └── tools/                        #    Orchestration tools (delegate, complete, trace)
 ├── train_qwen3_8b/                   # 🏋️ GRPO Training
 │   ├── grpo/                         #    GRPO training pipeline
-│   │   ├── train_grpo_qwen3_8b.sh   #    Training script (8×H20 GPUs)
-│   │   └── reward_fn.py             #    LLM-as-judge multi-dimensional reward
-│   └── ds_config.json               #    DeepSpeed config
-├── config/                           # Configuration files
+│   │   ├── train_grpo_qwen3_8b.sh    #    Training script (8×H20 GPUs)
+│   │   └── reward_fn.py              #    LLM-as-judge multi-dimensional reward
+│   └── ds_config.json                #    DeepSpeed config
+├── config/                           #    Configuration files
 │   ├── model_config.yaml             #    LLM API configuration
 │   └── benchmarks/                   #    Benchmark configurations
-├── eval/                             # Evaluation scripts
-├── requirements.txt                  # Python dependencies
+├── eval/                             #    Evaluation scripts
+├── requirements.txt                  #    Python dependencies
 └── README.md
 ```
 
